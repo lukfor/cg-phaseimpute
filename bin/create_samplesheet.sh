@@ -20,12 +20,12 @@ for bam_file in "$input_dir"/*.bam; do
   
   # Find the corresponding BAI file
   bai_file="${bam_file}.bai"
-  echo "index file found for $bai_file"
   # If the BAI file exists, add the entry to the CSV
   if [ -f "$bai_file" ]; then
     echo "$sample_name,$bam_file,$bai_file" >> "$output_csv"
   else
-    echo "Warning: No index file found for $bam_file"
+    echo "Error: No index file found for $bam_file"
+    exit 1
   fi
 done
 

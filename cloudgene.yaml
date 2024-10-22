@@ -1,7 +1,7 @@
 id: cg-phaseimpute
 name: Low sequencing imputation
 description: Pipeline to to impute low sequencing data
-version: 1.12.0
+version: 1.0.0
 website: https://github.com/nf-core/phaseimpute
 author: nf-core
 logo: https://raw.githubusercontent.com/nf-core/phaseimpute/dev/docs/images/nf-core-phaseimpute_logo_light.png
@@ -18,18 +18,24 @@ workflow:
       script: nf-core/phaseimpute
       revision: dev
       params:
-        #genome: "GRCh38"
         input: "${outdir}/samplesheet.csv"
-        panel: "${CLOUDGENE_APP_LOCATION}/panel.csv"
-        steps: "panelprep,impute"
+        panel: "${reference.panel}"
+        chunks: "${reference.chunks}"
+        posfile: "${reference.posfile}"
+        steps: "impute"
         fasta: "https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz"
         fasta_fai: "https://raw.githubusercontent.com/nf-core/test-datasets/phaseimpute/hum_data/reference_genome/GRCh38.s.fa.gz.fai"
 
   inputs:
+    - id: reference
+      description: Reference Panel
+      type: dataset
+      category: phaseimpute_reference
+      serialize: false 
     - id: input_folder
       description: BAM/BAI files
       type: local-folder
-      serialize: true
+      serialize: false
     - id: tools
       type: list
       description: Imputation Method
