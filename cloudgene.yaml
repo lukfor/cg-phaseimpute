@@ -28,7 +28,7 @@ workflow:
   inputs:
     - id: input_folder
       description: BAM/BAI files
-      type: folder
+      type: local-folder
       serialize: true
     - id: tools
       type: list
@@ -43,4 +43,4 @@ workflow:
   outputs:
     - id: outdir
       description: Output
-      type: folder
+      type: local-folder
