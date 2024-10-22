@@ -23,10 +23,11 @@ for bam_file in "$input_dir"/*.bam; do
   # If the BAI file exists, add the entry to the CSV
   if [ -f "$bai_file" ]; then
     echo "$sample_name,$bam_file,$bai_file" >> "$output_csv"
+    echo "Processed sample ${sample_name}"
   else
     echo "Error: No index file found for $bam_file"
     exit 1
   fi
 done
 
-echo "CSV file created: $output_csv"
+echo "Samplesheet created."

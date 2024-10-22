@@ -13,6 +13,7 @@ workflow:
       type: command
       cmd: ${CLOUDGENE_APP_LOCATION}/bin/create_samplesheet.sh ${input_folder} ${outdir}/samplesheet.csv
       bash: true
+      stdout: true
 
     - name: Imputation
       script: nf-core/phaseimpute
