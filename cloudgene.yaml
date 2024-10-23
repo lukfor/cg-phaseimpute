@@ -30,7 +30,7 @@ workflow:
   inputs:
     - id: reference
       description: Reference Panel
-      type: app_link
+      type: app_list
       category: phaseimpute_reference
       serialize: false 
     - id: input_folder
